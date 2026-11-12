@@ -1,0 +1,68 @@
+### Отримати всі відправлення
+GET http://localhost:5036/postings
+
+
+### Отримати відправлення за ID
+GET http://localhost:5036/postings/1
+
+
+### Створити нове відправлення
+POST http://localhost:5036/postings
+Content-Type: application/json
+
+{
+  "from": "Vlad",
+  "to": "Ivan",
+  "content": "Laptop",
+  "deliveryType": 2,
+  "weight": 2.5,
+  "width": 35,
+  "height": 25,
+  "depth": 10,
+  "value": 1000,
+  "price": 50
+}
+
+
+### Оновити відправлення
+PUT http://localhost:5036/postings/1
+Content-Type: application/json
+
+{
+  "from": "Alice",
+  "to": "Charlie",
+  "content": "New Books",
+  "deliveryType": 0,
+  "weight": 3,
+  "width": 35,
+  "height": 25,
+  "depth": 15,
+  "value": 80,
+  "price": 20
+}
+
+
+### Видалити відправлення
+DELETE http://localhost:5036/postings/1
+
+### ПР-46. Відсутнє відправлення, очікується HTTP 404
+GET http://localhost:5036/postings/2147483647
+
+### ПР-46. Некоректні поля, очікується HTTP 400 зі словником errors
+POST http://localhost:5036/postings
+Content-Type: application/json
+
+{
+  "from": "",
+  "to": "Луцьк",
+  "content": "Книги",
+  "deliveryType": "Courier",
+  "weight": 0,
+  "width": 20,
+  "height": 15,
+  "depth": 10,
+  "value": 0
+}
+
+### ПР-46. Виконати після зупинки сервера
+GET http://localhost:5036/postings

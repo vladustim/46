@@ -1,0 +1,10 @@
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+PostingDb.db
+PostingDb.db-*
+PostingEf.db
+PostingEf.db-*
+Звіт ПР-*.docx
+~$*.docx
